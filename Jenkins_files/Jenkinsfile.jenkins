@@ -1,0 +1,14 @@
+pipeline {
+    agent {
+        docker {
+            image 'php:latest'
+        }
+    }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'php --version'
+            }
+        }
+    }
+}
