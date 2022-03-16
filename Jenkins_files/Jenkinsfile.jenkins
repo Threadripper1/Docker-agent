@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Clone feature branche') {
             steps {
-                sh 'echo "hello world"'
+                sh 'git clone https://github.com/Threadripper1/Large-pipe.git'
             }
         }
     }
