@@ -19,8 +19,7 @@ pipeline {
 			// 	}
 			// }
 			steps {
-				sh 'find . Dockerfile & cat Dockerfile'
-				sh 'pwd'
+				sh 'find ./compose -name "db.php" -exec cat {} \;'
 			}
 		}
 	}
