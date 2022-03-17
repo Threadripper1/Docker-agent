@@ -1,12 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('Clone feature branche') {
-	    when {
-		not {
-		    branch 'master'
+	when {
+	    not {
+	        branch 'master'
 		}
-	    }
+	    }    
+        stage('Clone feature branche') {
             steps {
                 sh 'export BRANCH=$(git branch | cut -d " " -f2)'
 		sh 'git clone --branch=$BRANCH https://github.com/Threadripper1/Large-pipe.git'
