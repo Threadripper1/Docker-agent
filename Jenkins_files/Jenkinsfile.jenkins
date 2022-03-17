@@ -13,11 +13,6 @@ pipeline {
             }
         }
 		stage('List Docker files') {
-			when {
-				not {
-					branch 'master'
-				}
-			}
 			steps {
 				sh 'echo "Hello world!"'
 			}
