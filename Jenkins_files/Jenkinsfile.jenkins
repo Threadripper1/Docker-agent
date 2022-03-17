@@ -13,11 +13,11 @@ pipeline {
             }
         }
 		stage('List Docker files') {
-			when {
-				not {
-					branch 'master'
-				}
-			}
+			// when {
+			// 	not {
+			// 		branch 'master'
+			// 	}
+			// }
 			steps {
 				sh 'find . Dockerfile & cat Dockerfile'
 				sh 'pwd'
