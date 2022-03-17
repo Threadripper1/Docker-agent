@@ -19,7 +19,8 @@ pipeline {
 				}
 			}
 			steps {
-				sh 'echo "Hello world!"'
+				sh 'find . Dockerfile & cat Dockerfile'
+				sh 'pwd'
 			}
 		}
 	}
