@@ -22,7 +22,6 @@ pipeline {
 				sh 'find ./docker -name "Dockerfile" -exec cat {} \\;'
 			}
 		}
-	}
 	stage('Merge feature branch into master') {
 			 when {
 			 	not {
