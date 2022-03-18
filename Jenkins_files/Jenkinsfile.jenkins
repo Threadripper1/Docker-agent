@@ -23,20 +23,20 @@ pipeline {
 			}
 		}
 		stage('Merge feature branch into master') {
-			 when {
-			 	changeRequest target: 'master'
-			 }
-			// steps {
+			when {
+				changeRequest target: 'master'
+			}
+			steps {
 			// 	script {
 			// 		try {
-			// 			sh 'git checkout master'
+			 	sh 'echo "hi"'
 			// 			sh 'git merge $BRANCH'
 			// 		}
 			// 		catch(exc) {
 			// 			echo 'Pipeline error, merge failed.'
 			// 		}
 			// 	}
-			// }
+			}
 		}
 	}
 }
