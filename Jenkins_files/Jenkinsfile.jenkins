@@ -35,7 +35,6 @@ pipeline {
 					sh 'git merge $BRANCH'
 				}catch(Exeption e) {
 					echo 'Pipeline error, merge failed.'
-					throw
 				}
 			}
 		}
