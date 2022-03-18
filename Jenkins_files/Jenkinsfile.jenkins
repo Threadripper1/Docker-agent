@@ -24,9 +24,7 @@ pipeline {
 		}
 	stage('Merge feature branch into master') {
 			 when {
-			 	not {
-			 		branch 'master'
-			 	}
+			 	changeRequest target: 'master'
 			 }
 			steps {
 				script {
