@@ -8,9 +8,9 @@ pipeline {
 				}
 			}
             steps {
-                sh 'export BRANCH=$(git branch | cut -d " " -f2)'
-				sh 'git clone --branch=$BRANCH https://github.com/Threadripper1/Large-pipe.git'
-            }
+				sh 'rm -rf Large-pipe'
+				sh 'git clone --branch='+ env.BRANCH_NAME +' https://github.com/Threadripper1/Large-pipe.git'
+			}
         }
 		stage('List Docker files') {
 			 when {
@@ -20,23 +20,6 @@ pipeline {
 			 }
 			steps {
 				sh 'find ./docker -name "Dockerfile" -exec cat {} \\;'
-			}
-		}
-	}
-	stage('Merge feature branch into master') {
-			 when {
-			 	not {
-			 		branch 'master'
-			 	}
-			 }
-			steps {
-				try {
-					sh 'git checkout master'
-					sh 'git merge $BRANCH'
-				}catch(Exeption e) {
-					echo 'Pipeline error, merge failed.'
-					throw
-				}
 			}
 		}
 	}
