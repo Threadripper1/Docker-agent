@@ -22,20 +22,18 @@ pipeline {
 				sh 'find ./docker -name "Dockerfile" -exec cat {} \\;'
 			}
 		}
-	stage('Merge feature branch into master') {
+		stage('Merge feature branch into master') {
 			 when {
 			 	not {
 			 		branch 'master'
 			 	}
 			 }
-			steps {
-				try {
-					sh 'git checkout master'
-					sh 'git merge $BRANCH'
-				}
-				catch(exc) {
-					echo 'Pipeline error, merge failed.'
-				}
+			try {
+				sh 'git checkout master'
+				sh 'git merge $BRANCH'
+			}
+			catch(exc) {
+				echo 'Pipeline error, merge failed.'
 			}
 		}
 	}
