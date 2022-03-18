@@ -19,7 +19,7 @@ pipeline {
 			// 	}
 			// }
 			steps {
-				sh 'find ./compose -name "db.php" -exec cat {} \ ;'
+				sh 'find ./docker -name "Dockerfile" -exec cat {} \;'
 			}
 		}
 	}
