@@ -9,7 +9,7 @@ pipeline {
 			}
             steps {
 				sh 'env'
-				sh 'git clone --branch='+ env.GIT_BRANCH +'https://github.com/Threadripper1/Large-pipe.git'
+				sh 'git clone --branch='+ env.BRANCH_NAME +' https://github.com/Threadripper1/Large-pipe.git'
             }
         }
 		stage('List Docker files') {
