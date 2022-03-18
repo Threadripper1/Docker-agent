@@ -19,7 +19,7 @@ pipeline {
 			// 	}
 			// }
 			steps {
-				sh 'find ./docker -name "Dockerfile" -exec cat {} \;'
+				sh 'find ./docker -name "Dockerfile" -exec cat {} \\;'
 			}
 		}
 	}
