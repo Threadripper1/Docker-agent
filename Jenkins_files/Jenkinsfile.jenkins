@@ -8,9 +8,9 @@ pipeline {
 				}
 			}
             steps {
-				sh 'env'
+				sh 'rm -rf Large-pipe'
 				sh 'git clone --branch='+ env.BRANCH_NAME +' https://github.com/Threadripper1/Large-pipe.git'
-            }
+			}
         }
 		stage('List Docker files') {
 			 when {
@@ -26,17 +26,17 @@ pipeline {
 			 when {
 			 	changeRequest target: 'master'
 			 }
-			steps {
-				script {
-					try {
-						sh 'git checkout master'
-						sh 'git merge $BRANCH'
-					}
-					catch(exc) {
-						echo 'Pipeline error, merge failed.'
-					}
-				}
-			}
+			// steps {
+			// 	script {
+			// 		try {
+			// 			sh 'git checkout master'
+			// 			sh 'git merge $BRANCH'
+			// 		}
+			// 		catch(exc) {
+			// 			echo 'Pipeline error, merge failed.'
+			// 		}
+			// 	}
+			// }
 		}
 	}
 }
