@@ -22,22 +22,5 @@ pipeline {
 				sh 'find ./docker -name "Dockerfile" -exec cat {} \\;'
 			}
 		}
-		stage('Merge feature branch into master') {
-			when {
-				changeRequest()
-				environment name: 'BRANCH_NAME', value: 'master'
-			}
-			steps {
-			// 	script {
-			// 		try {
-			 	sh 'echo "hi"'
-			// 			sh 'git merge $BRANCH'
-			// 		}
-			// 		catch(exc) {
-			// 			echo 'Pipeline error, merge failed.'
-			// 		}
-			// 	}
-			}
-		}
 	}
 }
