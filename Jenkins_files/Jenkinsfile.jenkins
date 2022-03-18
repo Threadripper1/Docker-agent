@@ -32,7 +32,8 @@ pipeline {
 				try {
 					sh 'git checkout master'
 					sh 'git merge $BRANCH'
-				}catch(Exeption e) {
+				}
+				catch(exc) {
 					echo 'Pipeline error, merge failed.'
 				}
 			}
