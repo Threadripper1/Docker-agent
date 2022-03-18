@@ -8,8 +8,8 @@ pipeline {
 				}
 			}
             steps {
-                sh 'export BRANCH=$(git branch | cut -d " " -f2)'
-				sh 'git clone --branch=$BRANCH https://github.com/Threadripper1/Large-pipe.git'
+				sh 'env'
+				sh 'git clone --branch='+ env.GIT_BRANCH +'https://github.com/Threadripper1/Large-pipe.git'
             }
         }
 		stage('List Docker files') {
