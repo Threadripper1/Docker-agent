@@ -8,7 +8,7 @@ pipeline {
 				}
 			}
             steps {
-				sh 'rm -rf Large-pipe'
+			 	sh 'rm -rf Large-pipe'
 				sh 'git clone --branch='+ env.BRANCH_NAME +' https://github.com/Threadripper1/Large-pipe.git'
 			}
         }
@@ -20,6 +20,23 @@ pipeline {
 			 }
 			steps {
 				sh 'find ./docker -name "Dockerfile" -exec cat {} \\;'
+			}
+		}
+		stage('Merging'){
+			steps{
+				script{
+					try{
+						if(env.can_be_merged.toBoolean() == true){
+							sh 'git checkout master '
+							sh 'git merge master \"${BRANCH}\"'
+							sh 'git commit -am \"Merged \"${BRANCH}\" branch to master\"'
+							sh 'git push origin master'
+						}
+						else{
+							echo "git merge error"
+						}
+					}
+				}
 			}
 		}
 	}
